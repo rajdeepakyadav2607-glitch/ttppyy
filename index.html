@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+          .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.photo-card {
+    background: rgba(255,255,255,0.85);
+    padding: 10px;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.photo-card p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffd6e8, #e0c3fc);
+            color: #333;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            background: #ff4d88;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff1f6d;
+        }
+
+        /* Hide sections initially */
+        .hidden {
+            display: none;
+        }
+
+        /* Gallery */
+        .gallery img {
+            width: 260px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Letter */
+        .letter {
+            max-width: 700px;
+            background: rgba(255,255,255,0.8);
+            padding: 25px;
+            border-radius: 20px;
+            line-height: 1.8;
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            color: #ff4d88;
+            font-size: 20px;
+            animation: floatUp 6s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 🎵 Background Music -->
+<audio autoplay loop>
+    <source src="YOUR_SONG_LINK.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 1️⃣ Landing -->
+<section id="page1">
+    <h1>Happy Birthday Sneha ❤️</h1>
+    <p style="margin-top:15px;">This little website is just for you.</p>
+    <button onclick="nextPage(2)">Enter ✨</button>
+</section>
+
+<!-- 2️⃣ Memories -->
+<section id="page2" class="hidden">
+    <h2>Our Memories 📸</h2>
+
+    <div class="gallery">
+        <div class="photo-card">
+            <img src="images\photo1.jpg">
+            <p>Our first smile together 💕</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images\photo2.jpg">
+            <p>Still my favorite moment</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images\photo3.jpg">
+            <p>Madam workoholic</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images\photo4.jpg">
+            <p>Laughing like idiots 😄</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images\photo5.jpg">
+            <p>This one lives rent-free</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images\photo6.jpg">
+            <p>Forever starts here ❤️</p>
+        </div>
+    </div>
+
+    <button onclick="nextPage(3)">Next 💫</button>
+</section>
+
+
+<!-- 3️⃣ Love Letter -->
+<section id="page3" class="hidden">
+    <h2>For You 💌</h2>
+    <div class="letter">
+        <p>
+            Hey <b>Sneha</b>,<br><br>
+            From the moment you came into my life, everything felt lighter.
+            Your smile, your voice, your presence — they mean more to me
+            than I ever say out loud.<br><br>
+
+            You make ordinary days special just by being you.
+            I’m grateful for every laugh, every memory,
+            and every moment we’ve shared.<br><br>
+
+            On your birthday, I just want you to know —
+            I choose you. Today. Tomorrow. Always. ❤️
+        </p>
+    </div>
+</section>
+
+<!-- 4️⃣ Surprise -->
+<section id="page4" class="hidden">
+    <h2>Click below 💖</h2>
+    <button onclick="showLove()">Tap Me</button>
+    <h1 id="loveText" style="margin-top:20px;"></h1>
+</section>
+
+<script>
+    function nextPage(page) {
+        document.querySelectorAll("section").forEach(sec => sec.classList.add("hidden"));
+        document.getElementById("page" + page).classList.remove("hidden");
+    }
+
+    function showLove() {
+        document.getElementById("loveText").innerText = "I LOVE YOU ❤️";
+    }
+
+    // Floating hearts
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }, 500);
+</script>
+
+</body>
+</html>
